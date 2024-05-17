@@ -1,26 +1,52 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <LoginComponent v-if="tokenAuth == ''" />
+
+    <template v-else>
+
+      <!-- no auth -->
+      <LogoutComponent />
+      <template v-if="roomIdSelected == ''">
+        <!-- room selected -->
+        <RoomsComponent />
+      </template>
+      <template v-else>
+        <MessageComponent />
+      </template>
+
+    </template>
+  </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import LoginComponent from '@/components/LoginComponent.vue'
+import LogoutComponent from '@/components/LogoutComponent.vue'
+import MessageComponent from '@/components/MessageComponent.vue'
+import RoomsComponent from '@/components/RoomsComponent.vue'
 
 export default {
+  mounted() {
+    this.tokenAuth = this.$cookies.get('token') ?? ''
+  },
+  data() {
+    return {
+      tokenAuth: '',
+      roomIdSelected: ''
+    }
+  },
+  computed: {
+    tokenAuthRest: function () {
+      const res = this.tokenAuth.split('_')
+      return res[0] + ' ' + res[1]
+    }
+  },
   name: 'App',
   components: {
-    HelloWorld
+    LoginComponent,
+    LogoutComponent,
+    MessageComponent,
+    RoomsComponent
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
