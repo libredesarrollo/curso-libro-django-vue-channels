@@ -2,10 +2,11 @@
     <div>
         <AlertsComponent/>
 
-        
+        <p v-if='connecting'>Connecting...</p>
+
         <textarea v-model='message' class="form-control mt-2">
         </textarea>
-        <button @click='send' class='btn btn-success mt-1'>
+        <button @click='send' class='btn btn-success mt-1' :disabled='connecting'>
             Send
         </button>
     </div>
@@ -19,7 +20,8 @@ export default {
     data() {
         return {
             alertSocket: Object,
-            message: ''
+            message: '',
+            connecting:true
         }
     },
     mounted() {
@@ -28,10 +30,12 @@ export default {
     methods: {
         websocketInit() {
             this.alertSocket = new WebSocket('ws://127.0.0.1:8000/ws/alert/room/'+this.$root.roomIdSelected+'?'+this.$root.tokenAuth)
-
+            this.connecting=true
             // abrir canal WS
+            const c = this;
             this.alertSocket.onopen = function () {
                 console.log('Channels WS is Open!')
+                c.connecting=false
             }
 
 

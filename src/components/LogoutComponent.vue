@@ -4,11 +4,25 @@
     </div>
 </template>
 <script>
+
+const axios = require('axios')
+
 export default {
     methods: {
         logout() {
-            this.$root.tokenAuth = ''
-            this.$cookies.set('token', '')
+            axios.post('http://127.0.0.1:8000/api/logout', {
+                'token': this.$root.tokenAuth
+            }).then(
+                (res) => {
+                    console.log(res.data)
+                    this.$root.tokenAuth = ''
+                    this.$cookies.set('token', '')
+                }).catch((error) => {
+                    console.error(error)
+                    this.$root.tokenAuth = ''
+                    this.$cookies.set('token', '')
+                })
+
         }
     },
 }
