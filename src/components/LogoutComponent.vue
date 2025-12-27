@@ -5,12 +5,10 @@
 </template>
 <script>
 
-const axios = require('axios')
-
 export default {
     methods: {
         logout() {
-            axios.post('http://127.0.0.1:8000/api/logout', {
+            this.$axios.post('http://127.0.0.1:8000/api/logout', {
                 'token': this.$root.tokenAuth
             }).then(
                 (res) => {

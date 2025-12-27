@@ -10,7 +10,7 @@
     </div>
 </template>
 <script>
-const axios = require('axios')
+
 export default {
     data() {
         return {
@@ -25,7 +25,7 @@ export default {
             this.$root.roomIdSelected = roomId
         },
         getRooms: function () {
-            axios.get('http://127.0.0.1:8000/api/rooms', {
+            this.$axios.get('http://127.0.0.1:8000/api/rooms', {
                 headers: {
                     Authorization: this.$root.tokenAuthRest
                 }

@@ -19,7 +19,7 @@
 </template>
 
 <script>
-const axios = require('axios')
+
 
 export default {
     data() {
@@ -36,7 +36,7 @@ export default {
                 password:this.password.trim(),
             }
 
-            axios.post('http://127.0.0.1:8000/api/login',data).then(
+            this.$axios.post('http://127.0.0.1:8000/api/login',data).then(
                 (res) => {
                     console.log(res)
                     this.$root.tokenAuth=res.data

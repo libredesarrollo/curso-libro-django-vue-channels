@@ -11,7 +11,6 @@
     </div>
 </template>
 <script>
-const axios = require('axios')
 export default {
     data() {
         return {
@@ -23,7 +22,7 @@ export default {
     },
     methods: {
         getAlerts: function () {
-            axios.get('http://127.0.0.1:8000/api/alerts', {
+            this.$axios.get('http://127.0.0.1:8000/api/alerts', {
                 headers: {
                     Authorization: this.$root.tokenAuthRest
                 }
