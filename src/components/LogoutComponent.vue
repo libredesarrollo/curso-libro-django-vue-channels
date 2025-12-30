@@ -1,6 +1,6 @@
 <template>
-    <div class="d-flex justify-content-end mt-2 me-3">
-        <button class="btn btn-primary" @click="logout">Logout</button>
+    <div class="d-flex justify-content-end my-2 me-3">
+        <button class="btn btn-danger" @click="logout">Logout</button>
     </div>
 </template>
 <script>
