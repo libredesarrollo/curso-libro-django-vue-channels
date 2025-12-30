@@ -4,7 +4,7 @@ https://www.desarrollolibre.net/libros/primeros-pasos-django
 
 https://www.desarrollolibre.net/blog/python/curso-django
 
-Este fragmento extraído del curso *"Curso y Libro desarrollo web con Django 5 y Python 3"* de Desarrollolibre explica cómo integrar Django Channels y Vue para crear una aplicación de alertas en tiempo real :contentReference[oaicite:0]{index=0}.
+Este fragmento extraído del curso *"Curso y Libro desarrollo web con Django 6 y Python 3"* de Desarrollolibre explica cómo integrar Django Channels y Vue para crear una aplicación de alertas en tiempo real :contentReference[oaicite:0]{index=0}.
 
 ---
 
