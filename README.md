@@ -1,35 +1,72 @@
-# Consumir Django Channels con Vue — Aplicación de Mensajes de Alertas
+# Proyecto: Consumir Django Channels con Vue.js
 
-https://www.desarrollolibre.net/libros/primeros-pasos-django
+Este proyecto es una aplicación frontend desarrollada con **Vue.js** para demostrar cómo consumir una API en tiempo real construida con **Django Channels**. La aplicación permite a los usuarios autenticarse, unirse a salas y recibir mensajes o alertas en tiempo real enviados desde un backend de Django.
 
-https://www.desarrollolibre.net/blog/python/curso-django
-
-Este fragmento extraído del curso *"Curso y Libro desarrollo web con Django 5 y Python 3"* de Desarrollolibre explica cómo integrar Django Channels y Vue para crear una aplicación de alertas en tiempo real :contentReference[oaicite:0]{index=0}.
+El backend utiliza **Django REST Framework (DRF)** para gestionar la autenticación y la serialización de datos, mientras que **Django Channels** se encarga de la comunicación WebSocket.
 
 ---
 
-## 1. Presentación del módulo
-- En este módulo se plantea una aplicación donde Django (con DRF y Channels) envía alertas en tiempo real, y el frontend en Vue las consume dinámicamente :contentReference[oaicite:1]{index=1}.
+### Cursos y Libros de DesarrolloLibre
 
-## 2. Instalación y configuración
-- Se incluyen las dependencias necesarias para Django Channels y la configuración asociada, incluyendo posible uso de un backend **In-Memory Channel** en desarrollo :contentReference[oaicite:2]{index=2}.
-- Se integran Django REST Framework (DRF), Django Channels y Vue en una sola arquitectura.
+Este proyecto es un ejemplo práctico extraído del contenido educativo de **Desarrollolibre**. Si quieres aprender a construir aplicaciones completas como esta, consulta los siguientes recursos:
 
-## 3. Desarrollo de la aplicación de mensajes de alertas
-- Se construye una aplicación que permite transmitir mensajes desde Django hacia Vue en tiempo real, lo que facilita construir interfaces tipo alertas o notificaciones :contentReference[oaicite:3]{index=3}.
+- 📚 **Libro: Primeros Pasos con Django** - Una guía completa para iniciarte en el desarrollo web con el framework de Python más popular.
+  - [Ver el libro](https://www.desarrollolibre.net/libros/primeros-pasos-django)
+
+- 🎓 **Curso: Desarrollo Web con Django y Python** - Aprende a crear aplicaciones web robustas y escalables desde cero.
+  - [Ver el curso](https://www.desarrollolibre.net/blog/python/curso-django)
 
 ---
 
-##  Estructura sugerida del README.md
+## 🚀 Características
 
-```markdown
-## Módulo: DRF, Django Channels y Vue – Aplicación de Mensajes de Alertas
+- **Comunicación en Tiempo Real**: Conexión a un servidor WebSocket para recibir datos al instante.
+- **Autenticación de Usuarios**: Sistema de login para acceder a las funcionalidades protegidas.
+- **Salas de Mensajes**: Interfaz para seleccionar y unirse a diferentes salas de chat o notificación.
+- **Componentes Modulares**: La aplicación está estructurada en componentes reutilizables de Vue para una mejor organización (`Login`, `Logout`, `Rooms`, `Messages`).
+- **Integración con DRF**: Consume endpoints de una API REST para la gestión de usuarios y datos.
 
-###  Descripción
-En este módulo se desarrolla una funcionalidad de **alertas en tiempo real** utilizando una API con Django REST Framework, conectada a un sistema de mensajería en tiempo real mediante Django Channels, y consumida desde un frontend en Vue.
+## 🛠️ Tecnologías Utilizadas (Frontend)
 
-###  Backend (Django)
-1. **Dependencias necesarias**:
-   ```bash
-   pip install channels djangorestframework
-   # En desarrollo: In-Memory Channel layer
+- **Vue.js**: Framework progresivo para construir interfaces de usuario.
+- **Vite**: Herramienta de desarrollo frontend moderna y ultrarrápida.
+- **Axios**: Cliente HTTP para realizar peticiones a la API REST del backend.
+- **API WebSocket**: Interfaz nativa del navegador para la comunicación en tiempo real.
+
+## 📋 Requisitos del Backend
+
+Este frontend está diseñado para funcionar con un backend específico construido con:
+
+- Python
+- Django
+- Django REST Framework (DRF)
+- Django Channels
+
+## ⚙️ Instalación y Puesta en Marcha (Frontend)
+
+Sigue estos pasos para ejecutar el proyecto en tu entorno local:
+
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone https://github.com/tu-usuario/tu-repositorio.git
+    cd tu-repositorio
+    ```
+
+2.  **Instalar las dependencias del proyecto:**
+    ```bash
+    npm install
+    ```
+
+3.  **Configurar la URL del backend:**
+    Asegúrate de que las peticiones de Axios y la conexión WebSocket apunten a la dirección correcta de tu servidor Django.
+
+4.  **Iniciar el servidor de desarrollo:**
+    ```bash
+    npm run dev
+    ```
+
+5.  Abre tu navegador y visita `http://localhost:5173` (o el puerto que indique Vite).
+
+---
+
+Desarrollado como parte del material educativo de [Desarrollolibre.net](https://www.desarrollolibre.net).
