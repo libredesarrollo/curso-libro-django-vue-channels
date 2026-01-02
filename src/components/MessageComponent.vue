@@ -1,7 +1,7 @@
 <template>
   <div class="chat-container">
-    <div class="messages-area">
-      <AlertsComponent :key="getMessage" />
+    <div class="messages-area" ref="messagesArea">
+      <AlertsComponent :key="getMessage" @loaded="scrollToBottom" />
       <p v-if="connecting">Connecting to chat...</p>
     </div>
     <div class="input-area">
@@ -79,6 +79,14 @@ export default {
         // We update getMessage to show our own message in the alerts component
         this.getMessage = new Date().toISOString();
       }
+    },
+    scrollToBottom() {
+      this.$nextTick(() => {
+        const container = this.$refs.messagesArea;
+        if (container) {
+          container.scrollTop = container.scrollHeight;
+        }
+      });
     }
   },
   beforeDestroy() {

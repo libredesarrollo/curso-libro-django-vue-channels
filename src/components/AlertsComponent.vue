@@ -28,6 +28,7 @@ export default {
                 }
             }).then((res) => {
                 this.messages = res.data
+                this.$emit('loaded')
             }).catch((e) => {
                 console.log(e)
             })
