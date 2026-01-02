@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <transition-group name="fade" tag="div">
         <div v-for="m in messages" :key="m.id">
             <div class="card bg-light mt-2 mx-auto w-75" >
                 <div class="card-body">
@@ -8,7 +8,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </transition-group>
 </template>
 <script>
 export default {
@@ -36,3 +36,14 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+</style>

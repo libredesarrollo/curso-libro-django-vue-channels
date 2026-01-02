@@ -1,7 +1,7 @@
 <template>
   <div class="chat-container">
     <div class="messages-area" ref="messagesArea">
-      <AlertsComponent :key="getMessage" @loaded="scrollToBottom" />
+      <AlertsComponent ref="alertsComponent" @loaded="scrollToBottom" />
       <p v-if="connecting">Connecting to chat...</p>
     </div>
     <div class="input-area">
@@ -30,8 +30,7 @@ export default {
     return {
       alertSocket: null,
       message: '',
-      connecting: true,
-      getMessage: ''
+      connecting: true
     }
   },
   mounted() {
@@ -59,7 +58,7 @@ export default {
       this.alertSocket.onmessage = (event) => {
         console.log('Message received:', event.data);
         // We update getMessage to trigger a re-render of AlertsComponent
-        this.getMessage = new Date().toISOString();
+        this.$refs.alertsComponent.getAlerts();
       };
 
       this.alertSocket.onclose = () => {
@@ -77,7 +76,7 @@ export default {
         this.alertSocket.send(JSON.stringify({ message: this.message }));
         this.message = '';
         // We update getMessage to show our own message in the alerts component
-        this.getMessage = new Date().toISOString();
+        this.$refs.alertsComponent.getAlerts();
       }
     },
     scrollToBottom() {
