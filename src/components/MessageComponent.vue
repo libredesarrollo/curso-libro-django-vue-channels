@@ -82,6 +82,7 @@ export default {
     scrollToBottom() {
       this.$nextTick(() => {
         const container = this.$refs.messagesArea;
+
         if (container) {
           container.scrollTop = container.scrollHeight;
         }
