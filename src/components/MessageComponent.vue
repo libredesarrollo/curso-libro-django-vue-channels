@@ -1,7 +1,7 @@
 <template>
   <div class="chat-container">
     <div class="messages-area" ref="messagesArea">
-      <AlertsComponent ref="alertsComponent" @loaded="scrollToBottom" />
+      <!-- <AlertsComponent ref="alertsComponent" @loaded="scrollToBottom" /> -->
       <p v-if="connecting">Connecting to chat...</p>
     </div>
     <div class="input-area">
@@ -20,11 +20,11 @@
 </template>
 
 <script>
-import AlertsComponent from '@/components/AlertsComponent.vue'
+// import AlertsComponent from '@/components/AlertsComponent.vue'
 
 export default {
   components: {
-    AlertsComponent
+    // AlertsComponent
   },
   data() {
     return {
@@ -40,13 +40,14 @@ export default {
   },
   methods: {
     websocketInit() {
-      if (!this.$root.roomIdSelected || !this.$root.tokenAuth) {
-        console.error("Room ID or Auth Token is missing.");
-        this.connecting = false;
-        return;
-      }
+      // if (!this.$root.roomIdSelected || !this.$root.tokenAuth) {
+      //   console.error("Room ID or Auth Token is missing.");
+      //   this.connecting = false;
+      //   return;
+      // }
       
-      const wsUrl = `ws://127.0.0.1:8000/ws/alert/room/${this.$root.roomIdSelected}?${this.$root.tokenAuth}`;
+      // const wsUrl = `ws://127.0.0.1:8000/ws/alert/room/${this.$root.roomIdSelected}?${this.$root.tokenAuth}`;
+      const wsUrl = `ws://127.0.0.1:8000/ws/5`;
       this.alertSocket = new WebSocket(wsUrl);
       this.connecting = true;
 
@@ -58,7 +59,7 @@ export default {
       this.alertSocket.onmessage = (event) => {
         console.log('Message received:', event.data);
         // We update getMessage to trigger a re-render of AlertsComponent
-        this.$refs.alertsComponent.getAlerts();
+        //this.$refs.alertsComponent.getAlerts();
       };
 
       this.alertSocket.onclose = () => {
@@ -76,7 +77,7 @@ export default {
         this.alertSocket.send(JSON.stringify({ message: this.message }));
         this.message = '';
         // We update getMessage to show our own message in the alerts component
-        this.$refs.alertsComponent.getAlerts();
+        // this.$refs.alertsComponent.getAlerts();
       }
     },
     scrollToBottom() {
