@@ -12,7 +12,6 @@ export default {
                 'token': this.$root.tokenAuth
             }).then(
                 (res) => {
-                    console.log(res.data)
                     this.$root.tokenAuth = ''
                     this.$cookies.set('token', '')
                 }).catch((error) => {

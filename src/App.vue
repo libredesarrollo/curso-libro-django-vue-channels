@@ -1,6 +1,12 @@
 <template>
   <div class="container">
-    <MessageComponent />
+    
+    <LoginComponent v-if="tokenAuth == ''" />
+
+    <template v-else >
+      <MessageComponent />
+      <LogoutComponent />
+    </template>
 
   </div>
 
@@ -8,6 +14,8 @@
 
 <script>
 import MessageComponent from '@/components/MessageComponent.vue'
+import LoginComponent from '@/components/LoginComponent.vue';
+import LogoutComponent from '@/components/LogoutComponent.vue';
 
 export default {
   mounted() {
@@ -27,7 +35,9 @@ export default {
   },
   name: 'App',
   components: {
-    MessageComponent
+    MessageComponent,
+    LoginComponent,
+    LogoutComponent
   }
 }
 </script>

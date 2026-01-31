@@ -47,7 +47,8 @@ export default {
       // }
       
       // const wsUrl = `ws://127.0.0.1:8000/ws/alert/room/${this.$root.roomIdSelected}?${this.$root.tokenAuth}`;
-      const wsUrl = `ws://127.0.0.1:8000/ws/5`;
+      const wsUrl = `ws://127.0.0.1:8000/ws/5?token=${this.$root.tokenAuth}`;
+      // const wsUrl = ``;
       this.alertSocket = new WebSocket(wsUrl);
       this.connecting = true;
 

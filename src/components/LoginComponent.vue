@@ -38,11 +38,12 @@ export default {
 
             this.$axios.post('http://127.0.0.1:8000/api/login',data).then(
                 (res) => {
-                    console.log(res)
-                    this.$root.tokenAuth=res.data
+                    console.log(res.data)
+                    this.$root.tokenAuth=res.data.token
                     this.$cookies.set('token', this.$root.tokenAuth)
                 }).catch((error) =>{
                     console.error(error)
+                    // this.$cookies.set('token', "token-secreto")
                 })
         }
     },
