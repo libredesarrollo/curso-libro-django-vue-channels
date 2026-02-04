@@ -7,7 +7,7 @@
       <MessageComponent />
       <LogoutComponent />
     </template>
-
+    {{ tokenAuth }}
   </div>
 
 </template>
