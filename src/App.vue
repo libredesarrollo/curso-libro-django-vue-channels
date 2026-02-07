@@ -1,21 +1,30 @@
 <template>
-  <div class="container">
+
     
+  <div class="container">
     <LoginComponent v-if="tokenAuth == ''" />
 
-    <template v-else >
-      <MessageComponent />
-      <LogoutComponent />
-    </template>
-    {{ tokenAuth }}
-  </div>
+    <template v-else>
 
+      <!-- no auth -->
+      <LogoutComponent />
+      <template v-if="roomIdSelected == ''">
+        <!-- room selected -->
+        <RoomsComponent />
+      </template>
+      <template v-else>
+        <MessageComponent />
+      </template>
+
+    </template>
+  </div>
 </template>
 
 <script>
 import MessageComponent from '@/components/MessageComponent.vue'
 import LoginComponent from '@/components/LoginComponent.vue';
 import LogoutComponent from '@/components/LogoutComponent.vue';
+import RoomsComponent from './components/RoomsComponent.vue';
 
 export default {
   mounted() {
@@ -37,7 +46,8 @@ export default {
   components: {
     MessageComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    RoomsComponent
   }
 }
 </script>
