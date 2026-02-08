@@ -1,7 +1,7 @@
 <template>
   <div class="chat-container">
     <div class="messages-area" ref="messagesArea">
-      <!-- <AlertsComponent ref="alertsComponent" @loaded="scrollToBottom" /> -->
+      <AlertsComponent ref="alertsComponent" @loaded="scrollToBottom" />
       <p v-if="connecting">Connecting to chat...</p>
     </div>
     <div class="input-area">
@@ -20,11 +20,11 @@
 </template>
 
 <script>
-// import AlertsComponent from '@/components/AlertsComponent.vue'
+import AlertsComponent from '@/components/AlertsComponent.vue'
 
 export default {
   components: {
-    // AlertsComponent
+    AlertsComponent
   },
   data() {
     return {
@@ -77,7 +77,8 @@ export default {
         this.alertSocket.send(JSON.stringify({ message: this.message }));
         this.message = '';
         // We update getMessage to show our own message in the alerts component
-        // this.$refs.alertsComponent.getAlerts();
+
+        this.$refs.alertsComponent.getAlerts();
       }
     },
     scrollToBottom() {
