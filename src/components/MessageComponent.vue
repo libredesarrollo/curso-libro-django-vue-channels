@@ -59,7 +59,7 @@ export default {
       this.alertSocket.onmessage = (event) => {
         console.log('Message received:', event.data);
         // We update getMessage to trigger a re-render of AlertsComponent
-        //this.$refs.alertsComponent.getAlerts();
+        this.$refs.alertsComponent.getAlerts();
       };
 
       this.alertSocket.onclose = () => {
@@ -78,7 +78,7 @@ export default {
         this.message = '';
         // We update getMessage to show our own message in the alerts component
 
-        this.$refs.alertsComponent.getAlerts();
+        //this.$refs.alertsComponent.getAlerts();
       }
     },
     scrollToBottom() {

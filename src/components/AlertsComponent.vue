@@ -23,7 +23,7 @@ export default {
     methods: {
         getAlerts: function () {
             setTimeout(() => {
-                this.$axios.get('http://127.0.0.1:8000/api/alerts', {
+                this.$axios.get('http://127.0.0.1:8000/api/alerts?room_id=' + this.$root.roomIdSelected , {
                     headers: {
                         Authorization: this.$root.tokenAuthRest
                     }
