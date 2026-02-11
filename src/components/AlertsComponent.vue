@@ -21,6 +21,9 @@ export default {
         this.getAlerts()
     },
     methods: {
+        pushNewAlert(alert) {
+            this.messages.push(alert)
+        },
         getAlerts: function () {
             setTimeout(() => {
                 this.$axios.get('http://127.0.0.1:8000/api/alerts?room_id=' + this.$root.roomIdSelected , {

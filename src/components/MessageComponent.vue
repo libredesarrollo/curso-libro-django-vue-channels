@@ -59,7 +59,11 @@ export default {
       this.alertSocket.onmessage = (event) => {
         console.log('Message received:', event.data);
         // We update getMessage to trigger a re-render of AlertsComponent
-        this.$refs.alertsComponent.getAlerts();
+        //this.$refs.alertsComponent.getAlerts();
+
+        const data = JSON.parse(event.data);
+        this.$refs.alertsComponent.pushNewAlert(data);
+        this.scrollToBottom();
       };
 
       this.alertSocket.onclose = () => {
