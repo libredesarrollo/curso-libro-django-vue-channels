@@ -45,7 +45,7 @@ export default {
             this.$axios.post('http://127.0.0.1:8000/api/login',data).then(
                 (res) => {
                     console.log(res.data)
-                    this.$root.tokenAuth=res.data.token
+                    this.$root.tokenAuth=res.data.token ?? res.data // en FastAPI use .token, en Django le paso el texto directamente
                     this.$cookies.set('token', this.$root.tokenAuth)
                 }).catch((error) =>{
                     console.error(error)
