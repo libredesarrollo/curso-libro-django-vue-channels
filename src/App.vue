@@ -1,12 +1,9 @@
 <template>
-
-    
-  <div class="container">
+  <div id="app-wrapper">
     <LoginComponent v-if="tokenAuth == ''" />
 
-    <template v-else>
-
-      <!-- no auth -->
+    <div v-else class="container">
+      <!-- logged in -->
       <LogoutComponent />
       <template v-if="roomIdSelected == ''">
         <!-- room selected -->
@@ -16,7 +13,7 @@
         <MessageComponent />
       </template>
 
-    </template>
+    </div>
   </div>
 </template>
 

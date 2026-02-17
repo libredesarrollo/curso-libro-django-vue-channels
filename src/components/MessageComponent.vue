@@ -1,20 +1,38 @@
 <template>
-  <div class="chat-container">
-    <div class="messages-area" ref="messagesArea">
-      <AlertsComponent ref="alertsComponent" @loaded="scrollToBottom" />
-      <p v-if="connecting">Connecting to chat...</p>
-    </div>
-    <div class="input-area">
-      <textarea
-        v-model="message"
-        @keydown.enter.exact.prevent="send"
-        placeholder="Type a message..."
-        class="form-control"
-        :disabled="connecting"
-      ></textarea>
-      <button @click="send" class="btn btn-primary" :disabled="connecting || message.trim() === ''">
-        Send
-      </button>
+  <div class="chat-wrapper">
+    <div class="chat-card shadow-lg">
+      <div class="chat-header text-white d-flex justify-content-between align-items-center px-4 py-3">
+        <h5 class="mb-0 font-weight-bold"><i class="fas fa-comments mr-2"></i>Live chat</h5>
+        <span class="badge badge-light text-primary">Online</span>
+      </div>
+      
+      <div class="messages-area" ref="messagesArea">
+        <AlertsComponent ref="alertsComponent" @loaded="scrollToBottom" />
+        <div v-if="connecting" class="text-center mt-3 custom-loader">
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Connecting...</span>
+          </div>
+          <p class="small text-muted mt-2">Connecting to chat...</p>
+        </div>
+      </div>
+
+      <div class="input-area px-3 py-3">
+        <div class="input-group">
+          <textarea
+            v-model="message"
+            @keydown.enter.exact.prevent="send"
+            placeholder="Type your message..."
+            class="form-control rounded-left border-right-0 custom-textarea"
+            :disabled="connecting"
+            rows="1"
+          ></textarea>
+          <div class="input-group-append">
+            <button @click="send" class="btn btn-primary rounded-right px-4 font-weight-bold" :disabled="connecting || message.trim() === ''">
+              Send <i class="fas fa-paper-plane ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -104,41 +122,69 @@ export default {
 </script>
 
 <style scoped>
-.chat-container {
+.chat-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh; /* Or fit container */
+  padding: 1rem;
+}
+
+.chat-card {
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  height: 80vh; /* Example height, adjust as needed */
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  background: white;
+  border-radius: 12px;
   overflow: hidden;
+  border: none;
+}
+
+.chat-header {
+  background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%); /* Light blue gradient */
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 .messages-area {
   flex-grow: 1;
   overflow-y: auto;
-  padding: 15px;
-  background-color: #f9f9f9;
+  padding: 20px;
+  background-color: #f5f7fb; /* Light grayish blue background */
 }
 
 .input-area {
-  display: flex;
-  padding: 10px;
-  border-top: 1px solid #ccc;
-  background-color: #fff;
-  flex-shrink: 0;
+  background-color: white;
+  border-top: 1px solid #eee;
 }
 
-.input-area textarea {
-  flex-grow: 1;
-  margin-right: 10px;
-  resize: none; /* Prevents manual resizing which can break layout */
+.custom-textarea {
+  resize: none;
+  border-color: #e0e0e0;
+  box-shadow: none;
 }
 
-.input-area button {
-  flex-shrink: 0;
+.custom-textarea:focus {
+  border-color: #29b6f6;
+  box-shadow: 0 0 0 0.2rem rgba(41, 182, 246, 0.25);
 }
 
-p {
-    text-align: center;
+/* Custom Scrollbar for cleaner look */
+.messages-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages-area::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+.messages-area::-webkit-scrollbar-thumb {
+  background: #ccc; 
+  border-radius: 3px;
+}
+
+.messages-area::-webkit-scrollbar-thumb:hover {
+  background: #bbb; 
 }
 </style>
