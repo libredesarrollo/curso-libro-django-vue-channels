@@ -1,4 +1,4 @@
-# Proyecto: Consumir Django Channels con Vue.js
+# Proyecto: Consumir Django Channels O FastAPI con Vue.js
 
 Este proyecto es una aplicación frontend desarrollada con **Vue.js** para demostrar cómo consumir una API en tiempo real construida con **Django Channels**. La aplicación permite a los usuarios autenticarse, unirse a salas y recibir mensajes o alertas en tiempo real enviados desde un backend de Django.
 
@@ -15,6 +15,12 @@ Este proyecto es un ejemplo práctico extraído del contenido educativo de **Des
 
 - 🎓 **Curso: Desarrollo Web con Django y Python** - Aprende a crear aplicaciones web robustas y escalables desde cero.
   - [Ver el curso](https://www.desarrollolibre.net/blog/python/curso-django)
+
+- 📚 **Libro: Primeros Pasos con FastAPI** - Una guía completa para iniciarte en el desarrollo web con el framework de Python del momento.
+  - [Ver el libro](https://www.desarrollolibre.net/libros/libro-primeros-pasos-con-fastapi)
+
+- 🎓 **Curso: Desarrollo Web con FastAPI** - Aprende a crear aplicaciones APIs robustas y escalables desde cero.
+  - [Ver el curso](https://www.desarrollolibre.net/blog/python/curso-primeros-pasos-con-fastapi)
 
 ---
 
@@ -38,9 +44,9 @@ Este proyecto es un ejemplo práctico extraído del contenido educativo de **Des
 Este frontend está diseñado para funcionar con un backend específico construido con:
 
 - Python
-- Django
-- Django REST Framework (DRF)
-- Django Channels
+- Django/FastAPI
+- Django REST Framework (DRF)/FastAPI
+- Django Channels/FastAPI
 
 ## ⚙️ Instalación y Puesta en Marcha (Frontend)
 
